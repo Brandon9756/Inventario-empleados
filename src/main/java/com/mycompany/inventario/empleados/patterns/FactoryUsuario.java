@@ -1,0 +1,10 @@
+package com.mycompany.inventario.empleados.patterns;
+
+import com.mycompany.inventario.empleados.model.Rol;
+import com.mycompany.inventario.empleados.model.Usuario;
+
+public class FactoryUsuario {
+    public static Usuario crearUsuario(String nombre, Rol rol) {
+        return new Usuario(nombre, rol);
+    }
+}

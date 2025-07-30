@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.mycompany.inventario.empleados.controller.LoginController"
+          alignment="CENTER" hgap="10" vgap="10">
+    
+    <padding><Insets top="20" bottom="20" left="20" right="20"/></padding>
+
+    <Label text="Inicio de Sesión" style="-fx-font-size: 20px; -fx-font-weight: bold;" GridPane.columnSpan="2" />
+    
+    <Label text="Usuario:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="usuarioField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    
+    <Label text="Contraseña:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <PasswordField fx:id="claveField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Button text="Ingresar" onAction="#handleLogin" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    
+    <Label fx:id="mensajeLabel" text="" style="-fx-text-fill: red;" GridPane.rowIndex="4" GridPane.columnSpan="2"/>
+</GridPane>
