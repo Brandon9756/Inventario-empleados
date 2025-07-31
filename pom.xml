@@ -28,7 +28,7 @@
             <version>${javafx.version}</version>
         </dependency>
 
-        <!-- JUnit 5 para pruebas -->
+        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -60,24 +60,27 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin JavaFX sin uso de módulos -->
+            <!-- JavaFX Plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.mycompany.inventario.empleados.Launcher</mainClass>
-                    <classpathScope>compile</classpathScope> <!-- ✅ CLASSPATH en lugar de MODULEPATH -->
+                    <classpathScope>compile</classpathScope>
                 </configuration>
             </plugin>
 
-            <!-- Plugin para pruebas con JUnit -->
+            <!-- JUnit 5 Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>

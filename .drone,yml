@@ -4,18 +4,10 @@ name: default
 
 steps:
   - name: build-and-test
-    image: ubuntu:latest
+    image: maven:3.9.4-eclipse-temurin-24
     commands:
-      - apt update
-      - apt install -y openjdk-24-jdk maven
-      - java -version
       - mvn clean install
-
-  - name: package
-    image: ubuntu:latest
-    commands:
-      - apt update
-      - apt install -y openjdk-24-jdk maven
+      - mvn test
       - mvn package
 
 trigger:

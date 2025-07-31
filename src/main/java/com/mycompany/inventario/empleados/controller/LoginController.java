@@ -1,7 +1,7 @@
 package com.mycompany.inventario.empleados.controller;
 
-import com.mycompany.inventario.empleados.model.Empleado;
-import com.mycompany.inventario.empleados.controller.EmpleadoManager;
+import com.mycompany.inventario.empleados.model.Usuario;
+import com.mycompany.inventario.empleados.model.Rol;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginController {
 
@@ -17,11 +19,13 @@ public class LoginController {
     @FXML private PasswordField claveField;
     @FXML private Label mensajeLabel;
 
-    // Precarga de empleados ficticios
+    private static final List<Usuario> usuarios = new ArrayList<>();
+
+    // Precarga de usuarios ficticios
     static {
-        EmpleadoManager.agregarEmpleado("admin", "admin123", "admin");
-        EmpleadoManager.agregarEmpleado("juan", "1234", "empleado");
-        EmpleadoManager.agregarEmpleado("maria", "clave456", "empleado");
+        usuarios.add(new Usuario("admin", "admin123", Rol.ADMIN));
+        usuarios.add(new Usuario("juan", "1234", Rol.EMPLEADO));
+        usuarios.add(new Usuario("maria", "clave456", Rol.EMPLEADO));
     }
 
     public void handleLogin() {
@@ -33,10 +37,10 @@ public class LoginController {
             return;
         }
 
-        Empleado autenticado = null;
-        for (Empleado e : EmpleadoManager.obtenerEmpleados()) {
-            if (e.validarCredenciales(usuario, clave)) {
-                autenticado = e;
+        Usuario autenticado = null;
+        for (Usuario u : usuarios) {
+            if (u.getNombre().equals(usuario) && u.getContrasena().equals(clave)) {
+                autenticado = u;
                 break;
             }
         }
@@ -45,8 +49,7 @@ public class LoginController {
             mensajeLabel.setText("");
 
             try {
-                // 👇 Ajuste de rutas basadas en tu estructura real
-                String fxml = autenticado.getRol().equals("admin")
+                String fxml = autenticado.getRol() == Rol.ADMIN
                         ? "/com/mycompany/inventario/empleados/view/admin.fxml"
                         : "/com/mycompany/inventario/empleados/view/empleado.fxml";
 
@@ -55,7 +58,7 @@ public class LoginController {
 
                 Stage stage = (Stage) usuarioField.getScene().getWindow();
                 stage.setScene(new Scene(root));
-                stage.setTitle("Panel " + autenticado.getRol().toUpperCase());
+                stage.setTitle("Panel " + autenticado.getRol().name());
                 stage.show();
 
             } catch (IOException e) {
