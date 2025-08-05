@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mycompany.inventario.empleados.controller.AdminController"
+            style="-fx-padding: 20;">
+
+    <top>
+        <Label text="👨‍💼 Panel de Administración" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    </top>
+
+    <center>
+        <TabPane fx:id="adminTabPane">
+            <Tab text="Empleados">
+                <AnchorPane>
+                    <fx:include source="empleado.fxml"/>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Inventario">
+                <AnchorPane>
+                    <fx:include source="inventario.fxml"/>
+                </AnchorPane>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

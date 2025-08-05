@@ -1,0 +1,25 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: build
+    image: maven:3.9.4-eclipse-temurin-24
+    commands:
+      - mvn clean compile
+
+  - name: test
+    image: maven:3.9.4-eclipse-temurin-24
+    commands:
+      - mvn test
+
+  - name: package
+    image: maven:3.9.4-eclipse-temurin-24
+    commands:
+      - mvn package
+      - echo "Build complete: target/$(ls target | grep .jar)"
+
+trigger:
+  event:
+    - push
+    - pull_request
