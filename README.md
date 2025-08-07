@@ -265,3 +265,11 @@ El desarrollo futuro contempla:
 - [ ] Integración con base de datos externa (MySQL o PostgreSQL).
 - [ ] Internacionalización del sistema (soporte multilenguaje).
 Si tienes ideas o sugerencias, ¡no dudes en abrir un issue en el repositorio!
+
+
+CONTACTO:
+
+Autor: Brandon Ivan Alonso Ramirez
+email:brandon9756@gmail.com
+GitHub: https://github.com/brandon
+Gracias si en un futuro decides contribuir a este proyecto escolar :) 
